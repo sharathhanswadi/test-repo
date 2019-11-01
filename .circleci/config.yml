@@ -9,7 +9,7 @@ jobs:
 
       - run:
           name: change the directory
-          command: cd ~/porch-guru
+          command: ls -ltrh
 
       - restore_cache:
           keys:
