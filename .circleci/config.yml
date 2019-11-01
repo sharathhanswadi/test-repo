@@ -6,6 +6,11 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+
+      - run:
+          name: change the directory
+          command: cd ~/porch-guru
+
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
