@@ -28,8 +28,8 @@ jobs:
     environment:
       - PROJECT_NAME: "circle-ci"
       - GOOGLE_PROJECT_ID: "circle-ci-256918"
-      - GOOGLE_COMPUTE_ZONE: "us-central1-a"
-      - GOOGLE_CLUSTER_NAME: "istio-demo-sharath"
+      - GOOGLE_COMPUTE_ZONE: "us-west1-a"
+      - GOOGLE_CLUSTER_NAME: "example-cluster"
     steps:
       - checkout
       - run: 
