@@ -6,6 +6,11 @@ jobs:
     working_directory: ~/repo/porch-guru
     steps:
       - checkout
+
+      - run:
+          name: list directory
+          commamd: ls -ltrh
+
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
