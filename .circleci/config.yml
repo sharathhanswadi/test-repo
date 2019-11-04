@@ -9,7 +9,7 @@ jobs:
 
       - run:
           name: list directory
-          commamd: ls -ltrh
+          command: ls -ltrh
 
       - restore_cache:
           keys:
