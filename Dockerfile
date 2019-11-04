@@ -1,7 +1,9 @@
 FROM node:10-alpine
 
-COPY ./ ./
+COPY package*.json ./
 
-RUN yarn
+RUN npm install
 
-CMD yarn start
+COPY ./src ./src
+
+CMD node src/index.js

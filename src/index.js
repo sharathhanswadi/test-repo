@@ -1,12 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+const express = require('express')
+const app = express();
+const port = 8080;
 
-ReactDOM.render(<App />, document.getElementById('root'));
+app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/locations', (req, res) => {
+  res.status(200).json([
+    {
+      street1: 'Street1',
+      street2: 'Hosur road',
+      city: 'Bangalore',
+      pincode: '560095'
+    },
+    {
+      street1: '#103',
+      street2: 'Outer ring road',
+      city: 'Bangalore',
+      pincode: '560037'
+    }
+  ])
+});
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
