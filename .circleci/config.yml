@@ -3,14 +3,9 @@ jobs:
   build:
     docker:
       - image: circleci/node:10
-    working_directory: ~/repo/porch-guru
+    working_directory: ~/repo
     steps:
       - checkout
-
-      - run:
-          name: list directory
-          command: ls -ltrh
-
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
