@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: locations
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: locations
+  template:
+    metadata:
+      labels:
+        app: locations
+        version: v1
+    spec:
+      containers:
+      - name: locations
+        image: gcr.io/circle-ci-256918/circle-ci:52c583e845e651a5e666c13c5d13afc6b46592af
+        imagePullPolicy: "Always"
+        ports:
+        - name: http
+          containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: locations
+  labels:
+    app: locations
+spec:
+  selector:
+    app: locations
+  ports:
+  - name: http
+    port: 8081
+    targetPort: 8080
