@@ -55,7 +55,7 @@ jobs:
           name: Deploy to Kubernetes
           command: |
             kubectl apply -f locations.yaml
-            kubectl set image locations.yaml  locations=gcr.io/${GOOGLE_PROJECT_ID}/${PROJECT_NAME}:${CIRCLE_SHA1} 
+            kubectl set image deployment/locations   locations=gcr.io/${GOOGLE_PROJECT_ID}/${PROJECT_NAME}:${CIRCLE_SHA1} 
             kubectl rollout status deployment/locations
 workflows:
   version: 2
