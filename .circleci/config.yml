@@ -47,10 +47,13 @@ jobs:
             docker tag ${PROJECT_NAME} gcr.io/${GOOGLE_PROJECT_ID}/${PROJECT_NAME}:${CIRCLE_SHA1}
             gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
             docker push gcr.io/${GOOGLE_PROJECT_ID}/${PROJECT_NAME}:${CIRCLE_SHA1}
+
+      - run:
+          name: list
+          command: ls       
       - run: 
           name: Deploy to Kubernetes
           command: |
-             ls 
             kubectl apply -f locations.yml
             kubectl set image locations.yaml  locations=gcr.io/${GOOGLE_PROJECT_ID}/${PROJECT_NAME}:${CIRCLE_SHA1} 
             kubectl rollout status deployment/locations
