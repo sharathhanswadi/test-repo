@@ -24,7 +24,7 @@ jobs:
       - PROJECT_NAME: "circle-ci"
       - GOOGLE_PROJECT_ID: "circle-ci-256918"
       - GOOGLE_COMPUTE_ZONE: "us-west1-a"
-      - GOOGLE_CLUSTER_NAME: "example-cluster"
+      - GOOGLE_CLUSTER_NAME: "standard-cluster-1"
     steps:
       - checkout
       - run: 
