@@ -36,11 +36,7 @@ jobs:
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
             gcloud --quiet container clusters get-credentials ${GOOGLE_CLUSTER_NAME}
-      - setup_remote_docker
-      - run:
-          name: run pwd
-          command: |
-                  pwd  
+      - setup_remote_docker  
       - run: 
           name: Docker build and push
           command: |
@@ -53,7 +49,7 @@ jobs:
             gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
             docker push gcr.io/${GOOGLE_PROJECT_ID}/${PROJECT_NAME}:${CIRCLE_SHA1}
 
-            cd ~/repo/porch-guru-reservation
+            cd /root/project/porch-guru-reservation
             docker build \
               --build-arg COMMIT_REF=${CIRCLE_SHA1} \
               --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` \
