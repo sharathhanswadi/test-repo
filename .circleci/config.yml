@@ -52,7 +52,7 @@ jobs:
           name:  install istioctl 
           command: |
             curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.3.4 sh -
-            cd istio-1.3.4 && ls && mv istioctl /usr/local/bin
+            cd istio-1.3.4/bin && ls && mv istioctl /usr/local/bin
             
             
            
