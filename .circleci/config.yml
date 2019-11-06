@@ -37,6 +37,10 @@ jobs:
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
             gcloud --quiet container clusters get-credentials ${GOOGLE_CLUSTER_NAME}
       - setup_remote_docker
+      - run:
+          name: run pwd
+          command: |
+                  pwd  
       - run: 
           name: Docker build and push
           command: |
