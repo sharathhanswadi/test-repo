@@ -54,7 +54,13 @@ jobs:
             curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.1.16 sh -
             cd istio-1.1.16/bin && ls && mv istioctl /usr/local/bin
             
-            
+      - run:
+          name: install helm 
+          command: |
+              curl -O https://github.com/kubernetes/helm/archive/v2.7.2.tar.gz
+              tar -zxvf helm-v2.7.2-linux-amd64.tgz
+              mv linux-amd64/helm /usr/local/bin/helm
+              helm init       
            
 
       - run: 
