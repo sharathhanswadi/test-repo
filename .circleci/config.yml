@@ -6,6 +6,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+          path: ~/repo/porch
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
@@ -23,10 +24,11 @@ jobs:
     environment:
       - PROJECT_NAME: "circle-ci"
       - GOOGLE_PROJECT_ID: "circle-ci-256918"
-      - GOOGLE_COMPUTE_ZONE: "us-west1-a"
-      - GOOGLE_CLUSTER_NAME: "standard-cluster-1"
+      - GOOGLE_COMPUTE_ZONE: "us-central1-a"
+      - GOOGLE_CLUSTER_NAME: "glitter-bomb-cluster-prod"
     steps:
       - checkout
+          path: ~/repo/porch
       - run: 
           name: Setup Google Cloud SDK
           command: |
