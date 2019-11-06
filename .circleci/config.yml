@@ -40,9 +40,9 @@ jobs:
       - run: 
           name: Docker build and push
           command: |
-            if [ -d "porch-guru-reservation" ]
+            if [ -d "reservation" ]
             then 
-            cd porch-guru-reservation
+            cd reservation
             docker build \
               --build-arg COMMIT_REF=${CIRCLE_SHA1} \
               --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` \
