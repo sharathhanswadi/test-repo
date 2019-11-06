@@ -3,10 +3,9 @@ jobs:
   build:
     docker:
       - image: circleci/node:10
-    working_directory: ~/repo
+    working_directory: ~/repo/porch
     steps:
       - checkout
-          path: ~/repo/porch
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
@@ -28,7 +27,6 @@ jobs:
       - GOOGLE_CLUSTER_NAME: "glitter-bomb-cluster-prod"
     steps:
       - checkout
-          path: ~/repo/porch
       - run: 
           name: Setup Google Cloud SDK
           command: |
