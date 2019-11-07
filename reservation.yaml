@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reservation
+  template:
+    metadata:
+      labels:
+        app: reservation
+        version: v1
+    spec:
+      containers:
+      - name: reservation
+        image: gcr.io/sodium-burner-256908/reservation
+        ports:
+        - name: http
+          containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reservation
+  labels:
+    app: reservation
+spec:
+  selector:
+    app: reservation
+  ports:
+  - name: http
+    port: 8082
+    targetPort: 8080

@@ -84,8 +84,12 @@ jobs:
           command: |
             kubectl apply -f locations.yaml     
             kubectl apply -f <(istioctl kube-inject -f locations.yaml)
-            kubectl set image deployment/locations   locations=gcr.io/${GOOGLE_PROJECT_ID}/${PROJECT_NAME}:${CIRCLE_SHA1} 
+            kubectl set image deployment/locations   locations=gcr.io/${GOOGLE_PROJECT_ID}/location/${PROJECT_NAME}:${CIRCLE_SHA1} 
             kubectl rollout status deployment/locations
+            kubectl apply -f reservation.yaml
+            kubectl apply -f <(istioctl kube-inject -f reservation.yaml)
+            kubectl set image deployment/locations   reservation=gcr.io/${GOOGLE_PROJECT_ID}/reservation/${PROJECT_NAME}:${CIRCLE_SHA1}
+             kubectl rollout status deployment/reservation
 workflows:
   version: 2
   build:
