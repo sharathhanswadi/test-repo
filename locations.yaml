@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: locations
-        image: gcr.io/circle-ci-256918/circle-ci:52c583e845e651a5e666c13c5d13afc6b46592af
+        image: gcr.io/circle-ci-256918/location/circle-ci:f4d9fe6849002b587f38ccaddfbcbcdf614c1215
         imagePullPolicy: "Always"
         ports:
         - name: http

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: reservation
-        image: gcr.io/sodium-burner-256908/reservation
+        image: gcr.io/circle-ci-256918/reservation/circle-ci:f4d9fe6849002b587f38ccaddfbcbcdf614c1215
         ports:
         - name: http
           containerPort: 8080
