@@ -21,10 +21,10 @@ jobs:
     docker:
       - image: google/cloud-sdk
     environment:
-      - PROJECT_NAME: "prod-258311"
-      - GOOGLE_PROJECT_ID: "prod-258311-258406"
-      - GOOGLE_COMPUTE_ZONE: "us-west1-a"
-      - GOOGLE_CLUSTER_NAME: "glitterbomb-cluster-prod"
+      - PROJECT_NAME: "circle-ci"
+      - GOOGLE_PROJECT_ID: "circle-ci-256918"
+      - GOOGLE_COMPUTE_ZONE: "us-central1-a"
+      - GOOGLE_CLUSTER_NAME: "glitter-bomb-cluster-prod"
     steps:
       - checkout
       - run: 
@@ -64,19 +64,20 @@ jobs:
             docker tag ${PROJECT_NAME} gcr.io/${GOOGLE_PROJECT_ID}/location/${PROJECT_NAME}:${CIRCLE_SHA1}
             gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
             docker push gcr.io/${GOOGLE_PROJECT_ID}/location/${PROJECT_NAME}:${CIRCLE_SHA1}
-            
-           
+      - run:
+          name:  install istioctl 
+          command: |
+            curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.1.16 sh -
+            cd istio-1.1.16/bin && ls && mv istioctl /usr/local/bin
+                       
 
       - run: 
           name: Deploy to Kubernetesi
           command: |
-            kubectl label namespace default istio-injection=enabled
             kubectl apply -f locations.yaml     
-            kubectl set image deployment/locations   locations=gcr.io/${GOOGLE_PROJECT_ID}/location/${PROJECT_NAME}:${CIRCLE_SHA1} 
+            kubectl apply -f <(istioctl kube-inject -f locations.yaml)
+            kubectl set image deployment/locations   locations=gcr.io/${GOOGLE_PROJECT_ID}/${PROJECT_NAME}:${CIRCLE_SHA1} 
             kubectl rollout status deployment/locations
-            kubectl apply -f reservation.yaml
-            kubectl set image deployment/locations   reservation=gcr.io/${GOOGLE_PROJECT_ID}/reservation/${PROJECT_NAME}:${CIRCLE_SHA1}
-             kubectl rollout status deployment/reservation
 workflows:
   version: 2
   build:

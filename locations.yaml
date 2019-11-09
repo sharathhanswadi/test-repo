@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: locations
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: locations
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: locations
-        image: gcr.io/circle-ci-256918/location/circle-ci:f4d9fe6849002b587f38ccaddfbcbcdf614c1215
+        image:  gcr.io/prod-258311-258406/new:latest
         imagePullPolicy: "Always"
         ports:
         - name: http
