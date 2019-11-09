@@ -64,7 +64,7 @@ jobs:
               -t ${PROJECT_NAME} .
             docker tag ${PROJECT_NAME} gcr.io/${GOOGLE_PROJECT_ID}/reservation/${PROJECT_NAME}:${CIRCLE_SHA1}
             gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
-            docker push gcr.io/${GOOGLE_PROJECT_ID}/reservation/${PROJECT_NAME}:${CIRCLE_SHA1}
+            docker push gcr.io/${GOOGLE_PROJECT_ID}/location/${PROJECT_NAME}:${CIRCLE_SHA1}
             cd ..
             fi
  
