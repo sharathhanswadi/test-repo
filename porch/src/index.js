@@ -6,7 +6,7 @@ app.get('/', (req, res) => res.send('Hello World!'))
 app.get('/locations', (req, res) => {
   res.status(200).json([
     {
-      street1: 'istio done  ',
+      street1: ' done  ',
       street2: 'Hosur road',
       city: 'Bangalore',
       pincode: '560095'
