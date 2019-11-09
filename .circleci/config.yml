@@ -55,10 +55,8 @@ jobs:
       - run: 
           name: Deploy to Kubernetes
           command: |
-            kubectl apply -f locations.yaml     
-            kubectl set image deployment/locations   locations=gcr.io/${GOOGLE_PROJECT_ID}/location/${PROJECT_NAME}:${CIRCLE_SHA1} 
             kubectl apply -f reservation.yaml
-            kubectl set image deployment/locations   reservation=gcr.io/${GOOGLE_PROJECT_ID}/reservation/${PROJECT_NAME}:${CIRCLE_SHA1}
+            kubectl set image deployment/reservations   reservation=gcr.io/${GOOGLE_PROJECT_ID}/reservation/${PROJECT_NAME}:${CIRCLE_SHA1}
 workflows:
   version: 2
   build:
