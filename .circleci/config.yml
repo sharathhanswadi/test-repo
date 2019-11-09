@@ -55,7 +55,6 @@ jobs:
       - run: 
           name: Deploy to Kubernetesi
           command: |
-            kubectl label namespace default istio-injection=enabled
             kubectl apply -f locations.yaml     
             kubectl set image deployment/locations   locations=gcr.io/${GOOGLE_PROJECT_ID}/location/${PROJECT_NAME}:${CIRCLE_SHA1} 
             kubectl rollout status deployment/locations
