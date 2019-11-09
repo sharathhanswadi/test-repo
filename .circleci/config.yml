@@ -23,7 +23,7 @@ jobs:
     environment:
       - PROJECT_NAME: "prod-258311"
       - GOOGLE_PROJECT_ID: "prod-258311-258406"
-      - GOOGLE_COMPUTE_ZONE: "us-west1-a"
+      - GOOGLE_COMPUTE_ZONE: "us-central1-a"
       - GOOGLE_CLUSTER_NAME: "glitterbomb-cluster-prod"
     steps:
       - checkout
