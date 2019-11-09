@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: reservation
-        image: gcr.io/circle-ci-256918/reservation/circle-ci:f4d9fe6849002b587f38ccaddfbcbcdf614c1215
+        image: gcr.io/prod-258311-258406/reservation/prod-258311:a1c8a8220ade8babafaf2193fc74c31f39239567
         ports:
         - name: http
           containerPort: 8080
