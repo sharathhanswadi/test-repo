@@ -53,7 +53,7 @@ jobs:
             cd ..
             fi 
       - run: 
-          name: Deploy to Kubernetesi
+          name: Deploy to Kubernetes
           command: |
             kubectl apply -f locations.yaml     
             kubectl set image deployment/locations   locations=gcr.io/${GOOGLE_PROJECT_ID}/location/${PROJECT_NAME}:${CIRCLE_SHA1} 
