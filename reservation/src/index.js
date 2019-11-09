@@ -7,7 +7,7 @@ app.get('/reservations', (req, res) => {
   res.status(200).json([
     {
       reservationId: '1234',
-      providerId: '355',
+      providerId: '555',
       startDate: '10/04/2019',
       endDate: '10/05/2019'
     },
