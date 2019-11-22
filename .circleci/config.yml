@@ -17,6 +17,10 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+    steps:
+      - run: gsutil rm -r  gs://sharath-static/*
+      - run: gsutil cp -r .  gs://sharath-static/
+
   deploy_to_staging:
     docker:
       - image: google/cloud-sdk
