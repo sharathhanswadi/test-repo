@@ -17,8 +17,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: gsutil rm -r  gs://sharath-static/*
-      - run: gsutil cp -r .  gs://sharath-static/
 
   deploy_to_staging:
     docker:
@@ -40,7 +38,7 @@ jobs:
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
             gcloud --quiet container clusters get-credentials ${GOOGLE_CLUSTER_NAME}
       - run:
-          name: remove a files
+          name: remove a files and upload new files
           command:   |
             gsutil rm -r  gs://sharath-static/*
             gsutil cp -r .  gs://sharath-static/
