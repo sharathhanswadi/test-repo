@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "semantic-release": "semantic-release",
     "docker:build:prod": "docker build -f Dockerfile.prod -t kai:latest . && docker images"
   },
