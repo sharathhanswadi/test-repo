@@ -9,5 +9,8 @@ jobs:
         name: install
         command: npm install
       - run:
+        name: run semantic globally
+        command: npx semantic-release
+      - run:
         name: release
         command: npm run semantic-release || true
