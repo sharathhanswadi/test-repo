@@ -1,14 +1,61 @@
 {
   "name": "location-service",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "semantic-release": "semantic-release",
+    "docker:build:prod": "docker build -f Dockerfile.prod -t kai:latest . && docker images"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^3.0.6",
+    "@semantic-release/commit-analyzer": "^6.3.3",
+    "@semantic-release/git": "^7.0.18",
+    "@semantic-release/npm": "^5.3.4",
+    "@semantic-release/release-notes-generator": "^7.3.4",
+    "semantic-release": "^15.13.31"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sharathhanswadi/test-repo.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "release": {
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github",
+      "semantic-release-gcr"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "publish": [
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      {
+        "path": "semantic-release-gcr",
+        "name": "gcr.io/fine-ring-208513/kai"
+      },
+      {
+        "path": "semantic-release-gcr",
+        "name": "gcr.io/fine-ring-208513/kai-api"
+      }
+    ],
+    "npmPublish": false
   }
+
 }
