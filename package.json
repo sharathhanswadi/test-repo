@@ -11,8 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "semantic-release-gcr": "^1.0.26"
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.6",
@@ -47,14 +46,6 @@
     "publish": [
       "@semantic-release/npm",
       "@semantic-release/github",
-      {
-        "path": "semantic-release-gcr",
-        "name": "gcr.io/fine-ring-208513/kai"
-      },
-      {
-        "path": "semantic-release-gcr",
-        "name": "gcr.io/fine-ring-208513/kai-api"
-      }
     ],
     "npmPublish": false
   }
