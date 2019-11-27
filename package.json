@@ -1,10 +1,11 @@
 {
   "name": "location-service",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "semantic-release": "semantic-release"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +14,9 @@
   },
   "devDependencies": {
     "semantic-release": "^15.13.31"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sharathhanswadi/test-repo.git"
   }
 }
