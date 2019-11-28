@@ -1,3 +1,11 @@
+## [1.7.1](https://github.com/sharathhanswadi/test-repo/compare/v1.7.0...v1.7.1) (2019-11-28)
+
+
+### Bug Fixes
+
+* **pencil:** stop graphite breaking when too much pressure applied ([bf1ab47](https://github.com/sharathhanswadi/test-repo/commit/bf1ab47e6865f9816c488a8958c63da846e23734))
+* **pencil:** stop graphite breaking when too much pressure applied ([443697a](https://github.com/sharathhanswadi/test-repo/commit/443697a9a134ad1d71a3ce20f866cc63aceeb376))
+
 # [1.7.0](https://github.com/sharathhanswadi/test-repo/compare/v1.6.0...v1.7.0) (2019-11-28)
 
 
