@@ -12,7 +12,7 @@ jobs:
             - v1-dependencies-
       - run:
           name: Install dependencies
-          command: npm install && echo 'export PATH=$PATH:/usr/local/bin' >> $HOME/.bashrc && node -v  && PATH=/usr/bin/node:$PATH
+          command: npm install &&  && which node
       - save_cache:
           paths:
             - node_modules
@@ -21,7 +21,6 @@ jobs:
   deploy_to_staging:
     docker:
       - image: google/cloud-sdk
-      - image: circleci/node:10
     environment:
       - PROJECT_NAME: "prod"
       - GOOGLE_PROJECT_ID: "prod-258805"
