@@ -45,10 +45,11 @@ jobs:
       - run: 
           name: Docker build and push
           command: |
+               
             if [ -d "reservation" ]
             then 
-            cd reservation
-            ​PACKAGE_VERSION=$(/usr/local/bin/node -p "require('./package.json').version")
+            cd reservation && nvm install stable
+            ​PACKAGE_VERSION=$(node -p "require('./package.json').version")
             docker build \
               --build-arg COMMIT_REF=${CIRCLE_SHA1} \
               --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` \
