@@ -52,11 +52,7 @@ jobs:
             then 
             cd reservation
             apt-get install -y nodejs && node -v 
-            PACKAGE_VERSION=$(cat package.json \
-            | grep version \
-            | head -1 \
-            | awk -F: '{ print $2 }' \
-            | sed 's/[",]//g')
+            PACKAGE_VERSION=$(node -p "require('./package.json').version")
             
             docker build  -t ${PROJECT_NAME} .
             docker tag ${PROJECT_NAME}  gcr.io/${GOOGLE_PROJECT_ID}/reservation/${PROJECT_NAME}:$PACKAGE_VERSION
