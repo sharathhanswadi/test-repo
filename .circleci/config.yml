@@ -12,7 +12,7 @@ jobs:
             - v1-dependencies-
       - run:
           name: Install dependencies
-          command: npm install &&  && which node
+          command: npm install   && which node
       - save_cache:
           paths:
             - node_modules
