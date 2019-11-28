@@ -50,7 +50,11 @@ jobs:
             if [ -d "reservation" ]
             then 
             cd reservation
-            PACKAGE_VERSION=$(cat package.json \ | grep version \ | head -1 \ | awk -F: '{ print $2 }' \ | sed 's/[",]//g') 
+            PACKAGE_VERSION=$(cat package.json \
+            | grep version \
+            | head -1 \
+            | awk -F: '{ print $2 }' \
+            | sed 's/[",]//g')
             docker build \
               --build-arg COMMIT_REF=$PACKAGE_VERSION \
               --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` \
