@@ -49,14 +49,15 @@ jobs:
           command: |               
             if [ -d "reservation" ]
             then 
-            cd reservation 
+            cd reservation
+            PACKAGE_VERSION=$(cat package.json \ | grep version \ | head -1 \ | awk -F: '{ print $2 }' \ | sed 's/[",]//g') 
             docker build \
-              --build-arg COMMIT_REF=${CIRCLE_SHA1} \
+              --build-arg COMMIT_REF=$PACKAGE_VERSION \
               --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` \
               -t ${PROJECT_NAME} .
-            docker tag ${PROJECT_NAME} gcr.io/${GOOGLE_PROJECT_ID}/reservation/${PROJECT_NAME}:${CIRCLE_SHA1}
+            docker tag ${PROJECT_NAME} gcr.io/${GOOGLE_PROJECT_ID}/reservation/${PROJECT_NAME}:$PACKAGE_VERSION
             gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
-            docker push gcr.io/${GOOGLE_PROJECT_ID}/reservation/${PROJECT_NAME}:${CIRCLE_SHA1}
+            docker push gcr.io/${GOOGLE_PROJECT_ID}/reservation/${PROJECT_NAME}:$PACKAGE_VERSION
             cd ..
             fi
       - run:
