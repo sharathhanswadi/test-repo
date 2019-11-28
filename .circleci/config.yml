@@ -12,7 +12,7 @@ jobs:
             - v1-dependencies-
       - run:
           name: Install dependencies
-          command: npm install && echo 'export PATH=$PATH:/usr/local/bin' >> $HOME/.bashrc
+          command: npm install && echo 'export PATH=$PATH:/usr/local/bin' >> $HOME/.bashrc && node -v 
       - save_cache:
           paths:
             - node_modules
@@ -39,8 +39,7 @@ jobs:
             gcloud --quiet container clusters get-credentials ${GOOGLE_CLUSTER_NAME}
       - run:
           name:  release
-          command:   |
-            node -v 
+          command:   | 
             npm run semantic-release || true
       - setup_remote_docker  
       - run: 
