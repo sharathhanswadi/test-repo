@@ -48,6 +48,7 @@ jobs:
             if [ -d "reservation" ]
             then 
             cd reservation
+            ​PACKAGE_VERSION=$(/usr/local/bin/node -p "require('./package.json').version")
             docker build \
               --build-arg COMMIT_REF=${CIRCLE_SHA1} \
               --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` \
@@ -63,7 +64,7 @@ jobs:
             if [ -d "porch" ]
             then
             cd porch
-            PACKAGE_VERSION=$(node -p "require('./package.json').version")
+            PACKAGE_VERSION=$(/usr/local/bin/node -p "require('./package.json').version")
             docker build \
               --build-arg COMMIT_REF=$PACKAGE_VERSION \
               --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` \
