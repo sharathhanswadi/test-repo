@@ -27,6 +27,7 @@ jobs:
   deploy_to_staging:
     docker:
       - image: google/cloud-sdk
+      - image: circleci/node:10
     environment:
       - PROJECT_NAME: "prod"
       - GOOGLE_PROJECT_ID: "prod-258805"
@@ -50,6 +51,7 @@ jobs:
             if [ -d "reservation" ]
             then 
             cd reservation
+            npm install   && which node
             PACKAGE_VERSION=$(cat package.json \
             | grep version \
             | head -1 \
