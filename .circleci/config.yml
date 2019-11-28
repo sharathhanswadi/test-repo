@@ -51,7 +51,7 @@ jobs:
             if [ -d "reservation" ]
             then 
             cd reservation
-            npm install   && which node
+            sudo apt-get install -y nodejs && node -v 
             PACKAGE_VERSION=$(cat package.json \
             | grep version \
             | head -1 \
