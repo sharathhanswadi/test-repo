@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/sharathhanswadi/test-repo/compare/v1.5.0...v1.6.0) (2019-11-28)
+
+
+### Features
+
+* **seamntic release automated:** added seantic release cli setup ([2158807](https://github.com/sharathhanswadi/test-repo/commit/2158807faf54c1817e7fd7a8ebb95796aea92b82))
+
 # [1.5.0](https://github.com/sharathhanswadi/test-repo/compare/v1.4.0...v1.5.0) (2019-11-28)
 
 
