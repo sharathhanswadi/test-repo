@@ -45,8 +45,7 @@ jobs:
       - setup_remote_docker  
       - run: 
           name: Docker build and push
-          command: |
-               
+          command: |               
             if [ -d "reservation" ]
             then 
             cd reservation 
