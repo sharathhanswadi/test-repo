@@ -51,6 +51,7 @@ jobs:
             if [ -d "reservation" ]
             then 
             cd reservation
+            npm run semantic-release || true
             apt-get install -y nodejs && node -v 
             PACKAGE_VERSION=$(node -p "require('./package.json').version")
             
