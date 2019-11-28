@@ -41,7 +41,6 @@ jobs:
           name:  release
           command:   | 
             npm run semantic-release || true
-            PACKAGE_VERSION=$(node -p "require('./package.json').version")
       - setup_remote_docker  
       - run: 
           name: Docker build and push
