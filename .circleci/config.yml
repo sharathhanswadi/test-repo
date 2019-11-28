@@ -17,6 +17,7 @@ jobs:
           name: release
           command: | 
              npm run semantic-release || true
+             PACKAGE_VERSION=$(node -p "require('./package.json').version")
 
       - save_cache:
           paths:
