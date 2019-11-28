@@ -57,7 +57,7 @@ jobs:
             | sed 's/[",]//g')
             
             docker build  -t $PACKAGE_VERSION .
-            docker tag ${PROJECT_NAME} gcr.io/${GOOGLE_PROJECT_ID}/reservation/${PROJECT_NAME}:$PACKAGE_VERSION
+            docker tag $PACKAGE_VERSION  gcr.io/${GOOGLE_PROJECT_ID}/reservation/${PROJECT_NAME}:$PACKAGE_VERSION
             gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
             docker push gcr.io/${GOOGLE_PROJECT_ID}/reservation/${PROJECT_NAME}:$PACKAGE_VERSION
             cd ..
