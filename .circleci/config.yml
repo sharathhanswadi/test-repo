@@ -55,6 +55,8 @@ jobs:
             | head -1 \
             | awk -F: '{ print $2 }' \
             | sed 's/[",]//g')
+            
+            echo "${PACKAGE_VERSION}"
             docker build \
               --build-arg COMMIT_REF=${PACKAGE_VERSION} \
               --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` \
