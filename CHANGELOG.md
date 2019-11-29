@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/sharathhanswadi/test-repo/compare/v1.7.1...v1.8.0) (2019-11-29)
+
+
+### Features
+
+* **seamntic release automated:** added seantic ([5715e34](https://github.com/sharathhanswadi/test-repo/commit/5715e345e9aa122d40371eb7d64f03f18778772f))
+
 ## [1.7.1](https://github.com/sharathhanswadi/test-repo/compare/v1.7.0...v1.7.1) (2019-11-28)
 
 
